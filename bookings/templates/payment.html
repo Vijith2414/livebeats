@@ -1,0 +1,58 @@
+<!-- payment.html -->
+{% extends 'layout/app_layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Payment for {{ booking.concert.name }}</h2>
+    <p>Total Amount: ${{ total_amount|floatformat:2 }}</p>  <!-- Display total amount -->
+    <form id="payment-form" method="post">
+        {% csrf_token %}
+        <button id="submit">Pay {{ total_amount|floatformat:2 }}</button>
+        <div id="payment-message" class="hidden"></div>
+    </form>
+    <div id="qr-code" class="hidden">
+        <h3>Your Ticket QR Code</h3>
+        <img id="ticket-qr" src="" alt="QR Code">
+    </div>
+    <a id="download-pdf" class="hidden" href="{% url 'download_ticket' booking.id %}">Download PDF</a>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe('{{ settings.STRIPE_PUBLIC_KEY }}'); // Your public key
+    const elements = stripe.elements();
+    const form = document.getElementById('payment-form');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const { error, paymentIntent } = await stripe.confirmCardPayment('{{ client_secret }}', {
+            payment_method: {
+                card: elements.getElement(CardElement),
+            }
+        });
+
+        if (error) {
+            // Show error to your customer (e.g., insufficient funds)
+            document.getElementById('payment-message').innerText = error.message;
+        } else {
+            // Payment succeeded
+            document.getElementById('qr-code').classList.remove('hidden');
+            document.getElementById('download-pdf').classList.remove('hidden');
+
+            // Generate QR code
+            const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?data=YourTicketID-${paymentIntent.metadata.booking_id}`;
+            document.getElementById('ticket-qr').src = qrCodeUrl;
+
+            // Update booking payment status
+            fetch(`/update_payment_status/${paymentIntent.metadata.booking_id}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: JSON.stringify({ payment_status: true }),
+            });
+        }
+    });
+</script>
+{% endblock %}

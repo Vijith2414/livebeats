@@ -1,0 +1,10 @@
+{% extends "layout/app_layout.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>You are currently logged in as {{ user.username }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% endif %}
+{% endblock %}

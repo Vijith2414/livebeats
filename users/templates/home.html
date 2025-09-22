@@ -1,0 +1,34 @@
+{% extends 'layout/app_layout.html' %}
+{% block content %}
+<div class="container my-5" >
+    <div class="text-center">
+        <h1 class="display-4 ">Welcome, {{ user.username }}!</h1>
+        <p class="lead text-muted">Your gateway to unforgettable live music experiences!</p>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow-lg border-0 rounded-4" style="background: rgba(255, 255, 255, 0.2);">
+                <div class="card-body p-4 border-0 rounded-4" 
+                     style="background: rgba(0, 0, 0, 0.4); border-radius: 10px;">
+                    <p class="mb-4 text-white">
+                        We’re thrilled to have you here at <strong>ConcertBooking</strong>, your ultimate destination for live music! 
+                        Whether you're looking to secure tickets for your favorite artist, discover new performances, or plan an unforgettable night out, you’ve come to the right place.
+                    </p>
+                    <p class="mb-4 text-white">
+                        From intimate gigs to massive festivals, our platform connects you to the music and artists you love. 
+                        Explore personalized recommendations based on your preferences, stay updated on upcoming shows in your area, 
+                        and never miss the chance to be part of something extraordinary.
+                    </p>
+                    <p class="mb-4 text-white">
+                        Your next unforgettable live experience is just a few clicks away—browse our curated selection of events or dive into new genres and venues. 
+                        And if you need any help, we’re here to guide you every step of the way.
+                    </p>
+                    <div class="text-center">
+                        <a href="{% url 'read' %}" class="btn btn-danger btn-lg">Explore Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

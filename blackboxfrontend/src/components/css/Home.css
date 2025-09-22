@@ -1,0 +1,25 @@
+/* src/components/Home.css */
+.home-container {
+    text-align: center;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 10px;
+}
+
+.home-description {
+    margin: 20px 0;
+}
+
+.explore-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.explore-button:hover {
+    background-color: #c82333;
+}

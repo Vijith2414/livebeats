@@ -1,0 +1,76 @@
+{% extends 'layout/app_layout.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4" style="color: rgb(70, 15, 15); font-weight: bolder;">CONCERTS</h1>
+
+    <!-- Scrollable Concert List -->
+    <div class="scrollable-concerts">
+        <div class="row g-4 justify-content-center">
+            {% for concert in concert_list %}
+                <div class="col-md-6 col-lg-3 d-flex">
+                    <div class="card shadow-lg rounded-4 w-100"
+                         style="background: rgba(0, 0, 0, 0.5); color: white;">
+                        
+                        <!-- Concert Image -->
+                        <img class="card-img-top rounded-top-4" 
+                             src="{{ concert.image }}" 
+                             alt="{{ concert.name }} image" 
+                             style="height: 250px; object-fit: cover;">
+                        
+                        <!-- Concert Details -->
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-uppercase fw-bold">{{ concert.name }}</h5>
+                            <p class="card-text"><strong>Date & Time:</strong> {{ concert.date_time }}</p>
+                            <p class="card-text"><strong>Venue:</strong> {{ concert.venue }}</p>
+                            <p class="card-text"><strong>Ticket Price:</strong> {{ concert.ticket_price }}</p>
+                            <p class="card-text"><strong>Available Tickets:</strong> {{ concert.available_tickets }}</p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="card-footer d-flex flex-column">
+                            {% if user.is_staff %}
+                                <div class="d-flex justify-content-between">
+                                    <a href="{% url 'updateconcert' concert.id %}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{% url 'eachbookings' concert.id %}" class="btn btn-success btn-sm">Bookings</a>
+                                    <a href="{% url 'deleteconcert' concert.id %}" class="btn btn-danger btn-sm">Delete</a>
+                                </div>
+                            {% endif %}
+
+                            {% if user.is_authenticated and not user.is_staff %}
+                                <div class="d-flex justify-content-center mt-2">
+                                    <a href="{% url 'booktickets' concert.id %}" class="btn btn-success btn-sm">Book</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center text-muted">No upcoming concerts available at the moment.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Scrollable Concert List Styles -->
+<style>
+    .scrollable-concerts {
+        max-height: 500px; /* Adjust height as needed */
+        padding-right: 10px;
+    }
+
+    /* Custom Scrollbar */
+    .scrollable-concerts::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .scrollable-concerts::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .scrollable-concerts::-webkit-scrollbar-track {
+        background: #222;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+/* src/components/ConcertList.css */
+.concert-card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.concert-card img {
+    height: 200px; /* Set a fixed height for images */
+    object-fit: cover; /* Ensure images cover the area */
+}

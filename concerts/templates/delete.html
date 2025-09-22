@@ -1,0 +1,54 @@
+{% extends 'layout/app_layout.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg rounded-4 p-4 text-center" style="background: rgba(0, 0, 0, 0.6); color: white;">
+            <h2 class="mb-3 text-danger">Delete Concert</h2>
+            <p>Are you sure you want to delete <strong>"{{ concert.name }}"</strong>?</p>
+
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'read' %}" class="btn btn-secondary w-45">Cancel</a>
+                    <button type="submit" class="btn btn-danger w-45">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Center the form */
+    .d-flex {
+        padding-top: 40px;
+    }
+
+    /* Button styling */
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+
+    /* Adjust button widths */
+    .w-45 {
+        width: 48%;
+    }
+</style>
+
+{% endblock %}

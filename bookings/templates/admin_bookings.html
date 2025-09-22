@@ -1,0 +1,55 @@
+{% extends 'layout/app_layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary fw-bold">Concert Bookings Overview</h2>
+
+    <div class="card shadow-lg rounded-4 border-0" style="background: rgba(0, 0, 0, 0.5); color: white;">
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table class="table align-middle text-center" style="background: transparent; color: white;">
+                    <thead class="table-dark" style="background: rgba(0, 0, 0, 0.7);">
+                        <tr>
+                            <th scope="col" class="text-uppercase">User</th>
+                            <th scope="col" class="text-uppercase">Concert</th>
+                            <th scope="col" class="text-uppercase">Tickets Booked</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in bookings %}
+                            <tr style="background: rgba(255, 255, 255, 0.1); border-radius: 10px;">
+                                <td class="fw-semibold">{{ booking.user.username }}</td>
+                                <td>{{ booking.concert.name }}</td>
+                                <td class="text-success fw-bold">{{ booking.tickets_booked }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="3" class="text-center fw-bold text-danger py-4">No bookings found.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Make table rows semi-transparent */
+    tbody tr:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        transition: 0.3s;
+    }
+
+    /* Remove table borders */
+    table {
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    th, td {
+        padding: 12px;
+    }
+</style>
+
+{% endblock %}

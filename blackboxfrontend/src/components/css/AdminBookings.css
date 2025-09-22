@@ -1,0 +1,42 @@
+/* src/components/AdminBookings.css */
+
+.admin-bookings-container {
+    max-width: 800px; /* Limit the width of the container */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.admin-bookings-container h2 {
+    text-align: center; /* Center the heading */
+    color: #333; /* Darker color for the heading */
+}
+
+.admin-bookings-container ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+.admin-bookings-container li {
+    background-color: #ffffff; /* White background for each booking */
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Add padding */
+    margin-bottom: 15px; /* Space between bookings */
+    transition: box-shadow 0.3s; /* Smooth transition for hover effect */
+}
+
+.admin-bookings-container li:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.admin-bookings-container h3 {
+    margin: 0; /* Remove default margin */
+    color: #007bff; /* Bootstrap primary color for concert name */
+}
+
+.admin-bookings-container p {
+    margin: 5px 0; /* Space between paragraphs */
+}

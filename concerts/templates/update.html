@@ -1,0 +1,61 @@
+{% extends 'layout/app_layout.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg rounded-4 p-4" style="background: rgba(0, 0, 0, 0.6); color: white;">
+            <h1 class="text-center mb-3">Update Concert</h1>
+
+            <form method="POST" action="" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label text-white">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger">
+                                {{ field.errors|join:", " }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <button class="btn btn-success w-100" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Make inputs transparent */
+    input, select, textarea {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    input:focus, select:focus, textarea:focus {
+        background: rgba(255, 255, 255, 0.2);
+        outline: none;
+    }
+
+    /* Center the form on the page */
+    .d-flex {
+        padding-top: 40px;
+    }
+
+    /* Button styling */
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+</style>
+
+{% endblock %}

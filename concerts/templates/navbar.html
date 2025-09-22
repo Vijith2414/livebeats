@@ -1,0 +1,71 @@
+<style>
+    /* Ensure full-screen height */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Prevents extra scrolling */
+    }
+
+    /* Sticky Navbar */
+    .navbar {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.5); /* Semi-transparent */
+        color: white;
+    }
+    </style>
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-uppercase" href="{% url 'home' %}"> LiveBeats</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item mx-2" >
+                    <a class="navbar-link text-light" href="{% url 'read' %}">Concerts</a>
+                </li>
+                {% if user.is_authenticated %}
+                    {% if not user.is_staff %}
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-light" href="{% url 'user_booking' %}">Bookings</a>
+                        </li>
+                    {% endif %}
+
+                    {% if user.is_staff %}
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-light" href="{% url 'admin_bookings' %}">Admin Bookings</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-light" href="{% url 'create' %}">NEW Concert</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="nav-item mx-2">
+                        <form method="post" action="/logout/" style="display:inline; background: transparent; border: none;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger btn-sm shadow-sm rounded-3 px-3">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+
+                {% else %}
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-light" href="{% url 'login' %}">LOGIN</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-light" href="{% url 'signup' %}">REGISTER</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

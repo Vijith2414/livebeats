@@ -1,0 +1,63 @@
+.container {
+    margin-top: 3rem;
+    padding-top: 1rem;
+  }
+  
+  .concert-title {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: rgb(70, 15, 15);
+    font-weight: bolder;
+  }
+  
+  .scrollable-concerts {
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  
+  .scrollable-concerts::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollable-concerts::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .scrollable-concerts::-webkit-scrollbar-track {
+    background: #222;
+  }
+  .concert-card {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    width: 100%;
+  }
+  
+  .concert-card img {
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+  
+  .concert-card .card-body {
+    text-align: center;
+  }
+  
+  .concert-card .card-title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .concert-card .card-footer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .concert-card .btn-sm {
+    margin: 4px;
+  }
+  

@@ -1,0 +1,65 @@
+/* src/components/BookingForm.css */
+
+.booking-form-container {
+    max-width: 600px; /* Limit the width of the container */
+    margin: auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.booking-form-container .card {
+    border: none; /* Remove default card border */
+}
+
+.booking-form-container .card-body {
+    padding: 20px; /* Add padding to card body */
+}
+
+.booking-form-container h3 {
+    color: #333; /* Darker color for the heading */
+}
+
+.booking-form-container h5 {
+    color: #007bff; /* Bootstrap primary color for concert name */
+}
+
+.booking-form-container .text-center {
+    margin-bottom: 15px; /* Add margin to bottom of centered text */
+}
+
+.booking-form-container .form-label {
+    font-weight: bold; /* Make label text bold */
+}
+
+.booking-form-container .form-control {
+    margin: auto;
+    width: auto;
+    border-radius: 10px; /* Rounded input fields */
+    text-align: center;
+}
+
+.booking-form-container .btn {
+    width: 120px; /* Set a fixed width for buttons */
+}
+
+.booking-form-container .btn-success {
+    background-color: #28a745; /* Green background for success button */
+}
+
+.booking-form-container .btn-secondary {
+    background-color: #6c757d; /* Grey background for cancel button */
+}
+
+.booking-form-container .btn-secondary:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+}
+
+.booking-form-container .btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.booking-form-container .text-danger {
+    color: #dc3545; /* Red color for error messages */
+}

@@ -1,0 +1,108 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('https://static.vecteezy.com/system/resources/previews/024/603/806/non_2x/rock-music-concert-background-illustration-ai-generative-free-photo.jpg') 
+              no-repeat center center/cover;
+  color: white;
+}
+
+/* Main container with dark overlay */
+.app-container {
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom Card with glassmorphism effect */
+.custom-card {
+  background: rgba(255, 255, 255, 0.15); /* More transparent */
+  backdrop-filter: blur(12px); /* Stronger blur */
+  border-radius: 12px;
+  padding: 25px;
+  color: white;
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease-in-out;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.custom-card:hover {
+  box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Styled input fields */
+.custom-input {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 12px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #ff4757;
+}
+
+/* Explore Events Button */
+.custom-btn {
+  font-size: 18px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #ff6f61, #ff4757);
+  border: none;
+  color: white;
+  border-radius: 10px;
+  transition: transform 0.3s, background 0.3s;
+  text-decoration: none;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.custom-btn:hover {
+  background: linear-gradient(135deg, #ff4757, #ff6f61);
+  transform: scale(1.05);
+}
+
+/* Centered Container */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Navbar Styling */
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7); /* Darker for better visibility */
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 15px 20px;
+}
+
+/* Navbar Links */
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #ff6f61;
+}
